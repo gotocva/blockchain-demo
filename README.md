@@ -2,6 +2,8 @@
 
 An interactive walkthrough of how a blockchain works, built as a single-page React app and inspired by [Anders Brownworth's blockchain demo](https://andersbrownworth.com/blockchain/).
 
+🌐 **Live demo:** <https://gotocva.github.io/blockchain-demo/>
+
 This repository contains the **production build** (static `dist/` output) ready to be served by any static host (GitHub Pages, Netlify, Vercel, S3, Nginx, etc.).
 
 ## Live Demo Sections
@@ -36,21 +38,21 @@ npx serve .
 
 Then open <http://localhost:8080>.
 
-## Deploying
+## GitHub Pages Notes
 
-### GitHub Pages
-1. Push this repo to GitHub.
-2. In **Settings → Pages**, set the source to the `main` branch root.
-3. The site will be served at `https://<user>.github.io/Blockchain-Demo/`.
+This build is configured for the project page at `/blockchain-demo/`:
 
-### Netlify / Vercel
-Drag-and-drop the folder, or connect the repo and set the publish directory to `/`.
+- Vite `base` is set to `/blockchain-demo/` so all asset URLs are prefixed correctly.
+- `.nojekyll` is present so GitHub Pages serves files in `assets/` (Jekyll skips folders starting with `_`, but `.nojekyll` disables Jekyll altogether).
+- `404.html` is a copy of `index.html` so client-side routes (`/hash`, `/block`, etc.) survive a hard refresh — GitHub Pages serves `404.html` and React Router takes over.
 
 ## Layout
 
 ```
 .
-├── index.html         # SPA entry
+├── index.html         # SPA entry (base = /blockchain-demo/)
+├── 404.html           # SPA fallback for client-side routing on GitHub Pages
+├── .nojekyll          # Disable Jekyll processing
 ├── favicon.ico
 ├── robots.txt
 └── assets/            # Hashed JS + CSS bundles
@@ -62,3 +64,7 @@ Drag-and-drop the folder, or connect the repo and set the publish directory to `
     ├── DistributedPage-*.js
     └── TokensPage-*.js
 ```
+
+## Credits
+
+Conceptually based on Anders Brownworth's classic educational demo at <https://andersbrownworth.com/blockchain/>. UI rebuilt with shadcn/ui components and a responsive light/dark theme.
