@@ -62,7 +62,3 @@ Drag-and-drop the folder, or connect the repo and set the publish directory to `
     ├── DistributedPage-*.js
     └── TokensPage-*.js
 ```
-
-## Credits
-
-Conceptually based on Anders Brownworth's classic educational demo at <https://andersbrownworth.com/blockchain/>. UI rebuilt with shadcn/ui components and a responsive light/dark theme.
